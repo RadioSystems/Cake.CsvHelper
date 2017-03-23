@@ -163,5 +163,12 @@ namespace Cake.CsvHelpers {
         ///  <c>true</c> if an exception is to be thrown; otherwise, <c>false</c>. Defaults to <c>true</c>.
         /// </value>
         public bool WillThrowOnMissingField { get; set; }
+
+        /// <summary>
+        /// Initializes the <see cref="CsvHelperSettings"/> class.
+        /// </summary>
+        public CsvHelperSettings() {
+            Encoding = Encoding.UTF8;
+        }
     }
 }

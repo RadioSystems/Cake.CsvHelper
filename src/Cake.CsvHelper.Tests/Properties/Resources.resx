@@ -118,8 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CsvHelper_CsvFile" xml:space="preserve">
-    <value>Id, Name
-1, Jane
-2, Mal</value>
+    <value>Id,Name
+1,Jane
+2,Mal</value>
+  </data>
+  <data name="CsvHelper_MappedFile" xml:space="preserve">
+    <value>EmployeeId,GivenName
+1,Jane
+2,Mal</value>
   </data>
 </root>

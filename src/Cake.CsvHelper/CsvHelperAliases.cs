@@ -80,13 +80,8 @@ namespace Cake.CsvHelpers
         [CakeAliasCategory("WriteCsv")]
         public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-            var csvHelpers = new CsvHelpers(context.FileSystem, context.Environment);
             var settings = new CsvHelperSettings();
-            csvHelpers.WriteRecords(csvFile, records, settings);
+            WriteCsv(context, csvFile, records, settings);
         }
 
         /// <summary>

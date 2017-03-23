@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Cake.Core;
 using Cake.Core.IO;
+using Cake.CsvHelper.Tests.Fixtures;
 using Cake.CsvHelpers;
 using NSubstitute;
 using Should;
@@ -52,7 +53,5 @@ namespace Cake.CsvHelper.Tests {
         }
     }
 
-    public sealed class Person {
-        public int Id { get; set; }
-    }
+    
 }

@@ -61,13 +61,24 @@ namespace Cake.CsvHelper.Tests.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Id, Name
-        ///1, Jane
-        ///2, Mal.
+        ///   Looks up a localized string similar to Id,Name
+        ///1,Jane
+        ///2,Mal.
         /// </summary>
         internal static string CsvHelper_CsvFile {
             get {
                 return ResourceManager.GetString("CsvHelper_CsvFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EmployeeId,GivenName
+        ///1,Jane
+        ///2,Mal.
+        /// </summary>
+        internal static string CsvHelper_MappedFile {
+            get {
+                return ResourceManager.GetString("CsvHelper_MappedFile", resourceCulture);
             }
         }
     }

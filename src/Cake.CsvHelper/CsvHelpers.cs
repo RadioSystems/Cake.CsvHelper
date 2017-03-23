@@ -39,7 +39,7 @@ namespace Cake.CsvHelpers {
             if (settings == null) {
                 throw new ArgumentNullException(nameof(settings));
             }
-            var file = _fileSystem.GetFile(csvFile);
+            var file = GetFile(csvFile);
             using (var textReader = new StreamReader(file.OpenRead()))
             using (var csvReader = new CsvReader(textReader)) {
                 return csvReader.GetRecords<T>();
@@ -56,7 +56,7 @@ namespace Cake.CsvHelpers {
         /// <param name="settings">The settings.</param>
         public void WriteRecords<T>(FilePath csvFile, List<T> records, CsvClassMap classMap, CsvHelperSettings settings) {
             if (csvFile == null) {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(csvFile));
             }
             if (records == null) {
                 throw new ArgumentNullException(nameof(records));
@@ -68,11 +68,9 @@ namespace Cake.CsvHelpers {
                 throw new ArgumentNullException(nameof(settings));
             }
 
-            // Make the path absolute if necessary.
-            csvFile = csvFile.IsRelative ? csvFile.MakeAbsolute(_environment) : csvFile;
-            var file = _fileSystem.GetFile(csvFile);
+            var file = GetFile(csvFile);
             using (var stream = file.OpenWrite())
-            using (var textWriter = new StreamWriter(stream, new UTF8Encoding(false)))
+            using (var textWriter = new StreamWriter(stream, settings.Encoding))
             using (var csvWriter = new CsvWriter(textWriter)) {
                 csvWriter.Configuration.RegisterClassMap(classMap);
                 csvWriter.WriteHeader<T>();
@@ -117,7 +115,7 @@ namespace Cake.CsvHelpers {
         /// <param name="settings">The settings.</param>
         public void WriteRecords<T>(FilePath csvFile, List<T> records, CsvHelperSettings settings) {
             if (csvFile == null) {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(csvFile));
             }
             if (records == null) {
                 throw new ArgumentNullException(nameof(records));
@@ -127,10 +125,9 @@ namespace Cake.CsvHelpers {
             }
 
             // Make the path absolute if necessary.
-            csvFile = csvFile.IsRelative ? csvFile.MakeAbsolute(_environment) : csvFile;
-            var file = _fileSystem.GetFile(csvFile);
+            var file = GetFile(csvFile);
             using (var stream = file.OpenWrite())
-            using (var textWriter = new StreamWriter(stream, new UTF8Encoding(false)))
+            using (var textWriter = new StreamWriter(stream, settings.Encoding))
             using (var csvWriter = new CsvWriter(textWriter)) {
                 csvWriter.WriteHeader<T>();
                 foreach (var record in records) {
@@ -138,6 +135,11 @@ namespace Cake.CsvHelpers {
                 }
                 textWriter.Close();
             }
+        }
+
+        private IFile GetFile(FilePath path) {
+            var file = path.IsRelative ? path.MakeAbsolute(_environment) : path;
+            return _fileSystem.GetFile(file);
         }
     }
 }
