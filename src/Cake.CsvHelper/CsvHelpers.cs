@@ -40,7 +40,7 @@ namespace Cake.CsvHelpers {
                 throw new ArgumentNullException(nameof(settings));
             }
             var file = _fileSystem.GetFile(csvFile);
-            using(var textReader = new StreamReader(file.OpenRead()))
+            using (var textReader = new StreamReader(file.OpenRead()))
             using (var csvReader = new CsvReader(textReader)) {
                 return csvReader.GetRecords<T>();
             }
@@ -91,8 +91,9 @@ namespace Cake.CsvHelpers {
         /// <param name="records">The records to write.</param>
         /// <param name="mapping">The property column mapping.</param>
         /// <param name="settings">The settings.</param>
-        public void WriteRecords<T>(FilePath csvFile, List<T> records, Dictionary<string, string> mapping, CsvHelperSettings settings) {
-           if (mapping == null) {
+        public void WriteRecords<T>(FilePath csvFile, List<T> records, Dictionary<string, string> mapping,
+            CsvHelperSettings settings) {
+            if (mapping == null) {
                 throw new ArgumentNullException(nameof(mapping));
             }
             var customMap = new DefaultCsvClassMap<T>();
@@ -115,16 +116,13 @@ namespace Cake.CsvHelpers {
         /// <param name="records">The records to write.</param>
         /// <param name="settings">The settings.</param>
         public void WriteRecords<T>(FilePath csvFile, List<T> records, CsvHelperSettings settings) {
-            if (csvFile == null)
-            {
+            if (csvFile == null) {
                 throw new ArgumentNullException();
             }
-            if (records == null)
-            {
+            if (records == null) {
                 throw new ArgumentNullException(nameof(records));
             }
-            if (settings == null)
-            {
+            if (settings == null) {
                 throw new ArgumentNullException(nameof(settings));
             }
 
@@ -133,11 +131,9 @@ namespace Cake.CsvHelpers {
             var file = _fileSystem.GetFile(csvFile);
             using (var stream = file.OpenWrite())
             using (var textWriter = new StreamWriter(stream, new UTF8Encoding(false)))
-            using (var csvWriter = new CsvWriter(textWriter))
-            {
+            using (var csvWriter = new CsvWriter(textWriter)) {
                 csvWriter.WriteHeader<T>();
-                foreach (var record in records)
-                {
+                foreach (var record in records) {
                     csvWriter.WriteRecord(record);
                 }
                 textWriter.Close();
