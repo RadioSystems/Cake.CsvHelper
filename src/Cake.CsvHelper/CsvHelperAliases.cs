@@ -5,7 +5,7 @@ using Cake.Core.Annotations;
 using Cake.Core.IO;
 using CsvHelper.Configuration;
 
-namespace Cake.CsvHelpers
+namespace Cake.CsvHelper
 {
     /// <summary>
     /// Contians functionality related to reading and writing CSV files.

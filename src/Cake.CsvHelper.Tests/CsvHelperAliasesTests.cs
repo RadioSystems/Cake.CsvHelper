@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Cake.Core;
 using Cake.Core.IO;
 using Cake.CsvHelper.Tests.Fixtures;
-using Cake.CsvHelpers;
 using NSubstitute;
 using Should;
 using Xunit;

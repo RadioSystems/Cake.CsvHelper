@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Cake.Core;
 using Cake.Core.IO;
 using CsvHelper;
 using CsvHelper.Configuration;
 
-namespace Cake.CsvHelpers {
+namespace Cake.CsvHelper {
     /// <summary>
     /// The CsvHelpers class for working with CSV Helper.
     /// </summary>

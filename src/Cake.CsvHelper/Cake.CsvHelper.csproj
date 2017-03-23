@@ -7,7 +7,7 @@
     <ProjectGuid>{85C3E531-F53B-4344-9456-1B0176E547DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Cake.CsvHelpers</RootNamespace>
+    <RootNamespace>Cake.CsvHelper</RootNamespace>
     <AssemblyName>Cake.CsvHelper</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

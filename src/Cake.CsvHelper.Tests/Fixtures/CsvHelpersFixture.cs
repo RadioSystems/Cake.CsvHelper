@@ -2,7 +2,6 @@
 using Cake.Core;
 using Cake.Core.IO;
 using Cake.CsvHelper.Tests.Properties;
-using Cake.CsvHelpers;
 using Cake.Testing;
 using CsvHelper.Configuration;
 using NSubstitute;
@@ -54,17 +53,17 @@ namespace Cake.CsvHelper.Tests.Fixtures {
         }
 
         public void Read() {
-            var csvHelper = new CsvHelpers.CsvHelpers(Context.FileSystem, Context.Environment);
+            var csvHelper = new CsvHelpers(Context.FileSystem, Context.Environment);
             csvHelper.ReadRecords<Person>(CsvFilePath, Settings);
         }
 
         public void WriteNoMapping() {
-            var csvHelper = new CsvHelpers.CsvHelpers(Context.FileSystem, Context.Environment);
+            var csvHelper = new CsvHelpers(Context.FileSystem, Context.Environment);
             csvHelper.WriteRecords(ResultPath, People, Settings);
         }
 
         public void WriteWithMapping(bool useDictionaryMapping = false) {
-            var csvHelper = new CsvHelpers.CsvHelpers(Context.FileSystem, Context.Environment);
+            var csvHelper = new CsvHelpers(Context.FileSystem, Context.Environment);
             if (useDictionaryMapping) {
                 csvHelper.WriteRecords(ResultPath, People, DictionaryMap, Settings);
             }

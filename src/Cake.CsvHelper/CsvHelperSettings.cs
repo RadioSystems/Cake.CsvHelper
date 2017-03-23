@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Text;
 using CsvHelper;
 
-namespace Cake.CsvHelpers {
+namespace Cake.CsvHelper {
 
     /// <summary>
     /// Contains settings used by <see cref="CsvHelpers"/>.
