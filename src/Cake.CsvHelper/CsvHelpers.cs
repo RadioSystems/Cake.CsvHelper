@@ -99,7 +99,7 @@ namespace Cake.CsvHelpers {
             foreach (var key in mapping.Keys) {
                 var columnName = mapping[key];
                 if (string.IsNullOrEmpty(columnName)) continue;
-                var propertyInfo = typeof(T).GetType().GetProperty(key);
+                var propertyInfo = typeof(T).GetProperty(key);
                 var newMap = new CsvPropertyMap(propertyInfo);
                 newMap.Name(columnName);
                 customMap.PropertyMaps.Add(newMap);
@@ -115,8 +115,33 @@ namespace Cake.CsvHelpers {
         /// <param name="records">The records to write.</param>
         /// <param name="settings">The settings.</param>
         public void WriteRecords<T>(FilePath csvFile, List<T> records, CsvHelperSettings settings) {
-            var defaultMap = new DefaultCsvClassMap<T>();
-            WriteRecords(csvFile, records, defaultMap, settings);
+            if (csvFile == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (records == null)
+            {
+                throw new ArgumentNullException(nameof(records));
+            }
+            if (settings == null)
+            {
+                throw new ArgumentNullException(nameof(settings));
+            }
+
+            // Make the path absolute if necessary.
+            csvFile = csvFile.IsRelative ? csvFile.MakeAbsolute(_environment) : csvFile;
+            var file = _fileSystem.GetFile(csvFile);
+            using (var stream = file.OpenWrite())
+            using (var textWriter = new StreamWriter(stream, new UTF8Encoding(false)))
+            using (var csvWriter = new CsvWriter(textWriter))
+            {
+                csvWriter.WriteHeader<T>();
+                foreach (var record in records)
+                {
+                    csvWriter.WriteRecord(record);
+                }
+                textWriter.Close();
+            }
         }
     }
 }
