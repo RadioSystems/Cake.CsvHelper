@@ -74,8 +74,7 @@ namespace Cake.CsvHelper.Tests {
                 // Then
                 result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("records");
             }
-
-            [Fact]
+            
             public void Should_Throw_If_Settings_Are_Null() {
                 // Given
                 var fixture = new CsvHelpersFixture();
@@ -87,8 +86,7 @@ namespace Cake.CsvHelper.Tests {
                 // Then
                 result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("settings");
             }
-
-            [Fact]
+            
             public void Should_Write_Records_To_CsvFile_With_No_Map() {
                 // Given
                 var fixture = new CsvHelpersFixture(false);
@@ -170,8 +168,7 @@ namespace Cake.CsvHelper.Tests {
                 // Then
                 result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("settings");
             }
-
-            [Fact]
+            
             public void Should_Write_Records_To_CsvFile_With_Class_Map() {
                 // Given
                 var fixture = new CsvHelpersFixture(false);
@@ -189,8 +186,7 @@ namespace Cake.CsvHelper.Tests {
                 }
                 resultString.Trim().ShouldEqual(Resources.CsvHelper_MappedFile.Trim());
             }
-
-            [Fact]
+            
             public void Should_Write_Records_To_CsvFile_With_Dictionary_Map() {
                 // Given
                 var fixture = new CsvHelpersFixture(false);
