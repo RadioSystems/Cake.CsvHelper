@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <id>Cake.CsvHelper</id>
+    <version>0.0.0</version>
+    <authors>Radio Systems Corporation</authors>
+    <owners>Radio Systems Corporation</owners>
+    <description>Cake Addin for working with CSV files using the CSVHelper library.</description>
+    <summary>A set of aliases for Cake to help with running Gulp scripts as part of a build.</summary>
+    <licenseUrl>https://github.com/RadioSystems/Cake.CsvHelper/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/RadioSystems/Cake.CsvHelper</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>Copyright (c) Radio Systems Corporation 2017 - Present</copyright>
+    <tags>Cake, Script, Build, CsvHelper, CSV, Addin</tags>
+  </metadata>
+  <files>
+    <file src="Cake.CsvHelper.dll" target="lib\net45" />
+    <file src="Cake.CsvHelper.pdb" target="lib\net45" />
+    <file src="Cake.CsvHelper.xml" target="lib\net45" />
+    <file src="CsvHelper.dll" target="lib\net45" />
+    <file src="CsvHelper.xml" target="lib\net45" />
+  </files>
+</package>
