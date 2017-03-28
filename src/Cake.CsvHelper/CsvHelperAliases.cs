@@ -27,15 +27,9 @@ namespace Cake.CsvHelper
         /// </example>
         [CakeMethodAlias]
         [CakeAliasCategory("ReadCsv")]
-        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile)
-        {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-            var csvHelpers = new CsvHelpers(context.FileSystem, context.Environment);
+        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile) {
             var settings = new CsvHelperSettings();
-            return csvHelpers.ReadRecords<T>(csvFile, settings);
+            return ReadCsv<T>(context, csvFile, null, settings);
         }
 
         /// <summary>
@@ -48,19 +42,62 @@ namespace Cake.CsvHelper
         /// <returns>List objects as defined by type.</returns>
         /// <example>
         /// <code>
-        ///     <![CDATA[var people = ReadCsv<Person>("./people.csv", new CsvHelperSettings { HasHeaderRecord = true });]]>
+        ///     <![CDATA[var people = ReadCsv<Person>("./people.csv");]]>
         /// </code>
         /// </example>
         [CakeMethodAlias]
         [CakeAliasCategory("ReadCsv")]
-        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, CsvHelperSettings settings)
+        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, CsvHelperSettings settings) {
+           return ReadCsv<T>(context, csvFile, null, settings);
+        }
+
+        /// <summary>
+        /// Reads a CSV file into a C# object.
+        /// </summary>
+        /// <typeparam name="T">The type.</typeparam>
+        /// <param name="context">The context.</param>
+        /// <param name="classMap">The CSV class map.</param>
+        /// <param name="csvFile">The CSV to read.</param>
+        /// <returns>List objects as defined by type.</returns>
+        /// <example>
+        /// <code>     
+        ///     <![CDATA[var people = ReadCsv<Person>("./people.csv", new CsvClassMap());]]>
+        /// </code>
+        /// </example>
+        [CakeMethodAlias]
+        [CakeAliasCategory("ReadCsv")]
+        [CakeNamespaceImport("CsvHelper.Configuration.CsvClassMap")]
+        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, CsvClassMap classMap)
+        {
+            var settings = new CsvHelperSettings();
+            return ReadCsv<T>(context, csvFile, classMap, settings);
+        }
+
+        /// <summary>
+        /// Reads a CSV file into a C# object.
+        /// </summary>
+        /// <typeparam name="T">The type.</typeparam>
+        /// <param name="context">The context.</param>
+        /// <param name="csvFile">The CSV to read.</param>
+        /// <param name="classMap">The CSV class map.</param>
+        /// <param name="settings">The settings.</param>
+        /// <returns>List objects as defined by type.</returns>
+        /// <example>
+        /// <code>
+        ///     <![CDATA[var people = ReadCsv<Person>("./people.csv", new CsvClassMap(), new CsvHelperSettings { HasHeaderRecord = true });]]>
+        /// </code>
+        /// </example>
+        [CakeMethodAlias]
+        [CakeAliasCategory("ReadCsv")]
+        [CakeNamespaceImport("CsvHelper.Configuration.CsvClassMap")]
+        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, CsvClassMap classMap, CsvHelperSettings settings)
         {
             if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
             }
             var csvHelpers = new CsvHelpers(context.FileSystem, context.Environment);
-            return csvHelpers.ReadRecords<T>(csvFile, settings);
+            return csvHelpers.ReadRecords<T>(csvFile, classMap, settings);
         }
 
         /// <summary>

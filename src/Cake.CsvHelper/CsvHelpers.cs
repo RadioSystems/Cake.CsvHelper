@@ -29,9 +29,10 @@ namespace Cake.CsvHelper {
         /// </summary>
         /// <typeparam name="T">The record type.</typeparam>
         /// <param name="csvFile">The CSV file to read.</param>
-        /// <param name="settings"></param>
+        /// <param name="classMap">The class map to use, null if not needed.</param>
+        /// <param name="settings">The settings.</param>
         /// <returns>List of defined type.</returns>
-        public IEnumerable<T> ReadRecords<T>(FilePath csvFile, CsvHelperSettings settings) {
+        public IEnumerable<T> ReadRecords<T>(FilePath csvFile, CsvClassMap classMap, CsvHelperSettings settings) {
             if (csvFile == null) {
                 throw new ArgumentNullException(nameof(csvFile));
             }
@@ -41,6 +42,9 @@ namespace Cake.CsvHelper {
             var file = GetFile(csvFile);
             using (var textReader = new StreamReader(file.OpenRead()))
             using (var csvReader = new CsvReader(textReader)) {
+                if (classMap != null) {
+                    csvReader.Configuration.RegisterClassMap(classMap);
+                }
                 return csvReader.GetRecords<T>();
             }
         }
