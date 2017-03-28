@@ -54,7 +54,7 @@ namespace Cake.CsvHelper.Tests.Fixtures {
 
         public void Read() {
             var csvHelper = new CsvHelpers(Context.FileSystem, Context.Environment);
-            csvHelper.ReadRecords<Person>(CsvFilePath, Settings);
+            csvHelper.ReadRecords<Person>(CsvFilePath, null, Settings);
         }
 
         public void WriteNoMapping() {
