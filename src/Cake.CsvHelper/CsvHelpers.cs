@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Cake.Core;
 using Cake.Core.IO;
 using CsvHelper;
@@ -45,7 +46,7 @@ namespace Cake.CsvHelper {
                 if (classMap != null) {
                     csvReader.Configuration.RegisterClassMap(classMap);
                 }
-                return csvReader.GetRecords<T>();
+                return csvReader.GetRecords<T>().ToList();
             }
         }
 
