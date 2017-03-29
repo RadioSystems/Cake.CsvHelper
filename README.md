@@ -9,15 +9,14 @@ Cake Addin for working with CSV files using the CSVHelper library.
 | | Stable | Pre-release |
 |---|---|---|
 |GitHub Release|-|[![GitHub release](https://img.shields.io/github/release/Cake.CsvHelper/Cake.CsvHelper.svg)](https://github.com/RadioSystems/Cake.CsvHelper/releases/latest)|
-|NuGet|[![NuGet](https://img.shields.io/nuget/v/Cake.CsvHelper.svg)](https://www.nuget.org/packages/Cake.CsvHelper)
-|[![NuGet](https://img.shields.io/nuget/vpre/Cake.CsvHelper.svg)](https://www.nuget.org/packages/Cake.CsvHelper)|
+|NuGet|[![NuGet](https://img.shields.io/nuget/v/Cake.CsvHelper.svg)](https://www.nuget.org/packages/Cake.CsvHelper)|[![NuGet](https://img.shields.io/nuget/vpre/Cake.CsvHelper.svg)](https://www.nuget.org/packages/Cake.CsvHelper)|
+|MyGet|
 
 ## Build Status
 
 |Develop|Master|
 |:--:|:--:|
-|[![Build status](https://ci.appveyor.com/api/projects/status/k68c22sa0um8an29?svg=true)](https://ci.appveyor.com/project/RadioSystems/cake-csvhelper/branch/develop)
-|[![Build status](https://ci.appveyor.com/api/projects/status/k68c22sa0um8an29/branch/develop?svg=true)](https://ci.appveyor.com/project/RadioSystems/cake-csvhelper/branch/master)|
+|[![Build status](https://ci.appveyor.com/api/projects/status/k68c22sa0um8an29?svg=true)](https://ci.appveyor.com/project/RadioSystems/cake-csvhelper/branch/develop)|[![Build status](https://ci.appveyor.com/api/projects/status/k68c22sa0um8an29/branch/develop?svg=true)](https://ci.appveyor.com/project/RadioSystems/cake-csvhelper/branch/master)|
 
 ## Code Coverage
 
