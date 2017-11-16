@@ -33,7 +33,7 @@ namespace Cake.CsvHelper {
         /// <param name="classMap">The class map to use, null if not needed.</param>
         /// <param name="settings">The settings.</param>
         /// <returns>List of defined type.</returns>
-        public IEnumerable<T> ReadRecords<T>(FilePath csvFile, CsvClassMap classMap, CsvHelperSettings settings) {
+        public IEnumerable<T> ReadRecords<T>(FilePath csvFile, ClassMap classMap, CsvHelperSettings settings) {
             if (csvFile == null) {
                 throw new ArgumentNullException(nameof(csvFile));
             }
@@ -58,7 +58,7 @@ namespace Cake.CsvHelper {
         /// <param name="records">The records to write.</param>
         /// <param name="classMap">The class map.</param>
         /// <param name="settings">The settings.</param>
-        public void WriteRecords<T>(FilePath csvFile, List<T> records, CsvClassMap classMap, CsvHelperSettings settings) {
+        public void WriteRecords<T>(FilePath csvFile, List<T> records, ClassMap classMap, CsvHelperSettings settings) {
             if (csvFile == null) {
                 throw new ArgumentNullException(nameof(csvFile));
             }
@@ -98,15 +98,8 @@ namespace Cake.CsvHelper {
             if (mapping == null) {
                 throw new ArgumentNullException(nameof(mapping));
             }
-            var customMap = new DefaultCsvClassMap<T>();
-            foreach (var key in mapping.Keys) {
-                var columnName = mapping[key];
-                if (string.IsNullOrEmpty(columnName)) continue;
-                var propertyInfo = typeof(T).GetProperty(key);
-                var newMap = new CsvPropertyMap(propertyInfo);
-                newMap.Name(columnName);
-                customMap.PropertyMaps.Add(newMap);
-            }
+            var customMap = new DefaultClassMap<T>();
+            customMap.AutoMap();
             WriteRecords(csvFile, records, customMap, settings);
         }
 

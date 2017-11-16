@@ -15,7 +15,7 @@ namespace Cake.CsvHelper.Tests.Fixtures {
         public CsvHelperSettings Settings { get; set; }
         public List<Person> People { get; set; }
         public Dictionary<string, string> DictionaryMap { get; set; }
-        public CsvClassMap ClassMap { get; set; }
+        public ClassMap ClassMap { get; set; }
 
         public CsvHelpersFixture(bool csvFileExists = true, bool peopleExists = true) {
             Settings = new CsvHelperSettings();
@@ -78,7 +78,7 @@ namespace Cake.CsvHelper.Tests.Fixtures {
         public string Name { get; set; }
     }
 
-    public class PersonMap : CsvClassMap<Person> {
+    public class PersonMap : ClassMap<Person> {
         public PersonMap() {
             Map(m => m.Id).Name("EmployeeId");
             Map(m => m.Name).Name("GivenName");
