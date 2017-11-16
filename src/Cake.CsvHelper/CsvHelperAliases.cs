@@ -61,13 +61,13 @@ namespace Cake.CsvHelper
         /// <returns>List objects as defined by type.</returns>
         /// <example>
         /// <code>     
-        ///     <![CDATA[var people = ReadCsv<Person>("./people.csv", new CsvClassMap());]]>
+        ///     <![CDATA[var people = ReadCsv<Person>("./people.csv", new ClassMap());]]>
         /// </code>
         /// </example>
         [CakeMethodAlias]
         [CakeAliasCategory("ReadCsv")]
         [CakeNamespaceImport("CsvHelper.Configuration.CsvClassMap")]
-        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, CsvClassMap classMap)
+        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, ClassMap classMap)
         {
             var settings = new CsvHelperSettings();
             return ReadCsv<T>(context, csvFile, classMap, settings);
@@ -84,13 +84,13 @@ namespace Cake.CsvHelper
         /// <returns>List objects as defined by type.</returns>
         /// <example>
         /// <code>
-        ///     <![CDATA[var people = ReadCsv<Person>("./people.csv", new CsvClassMap(), new CsvHelperSettings { HasHeaderRecord = true });]]>
+        ///     <![CDATA[var people = ReadCsv<Person>("./people.csv", new ClassMap(), new CsvHelperSettings { HasHeaderRecord = true });]]>
         /// </code>
         /// </example>
         [CakeMethodAlias]
         [CakeAliasCategory("ReadCsv")]
         [CakeNamespaceImport("CsvHelper.Configuration.CsvClassMap")]
-        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, CsvClassMap classMap, CsvHelperSettings settings)
+        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, ClassMap classMap, CsvHelperSettings settings)
         {
             if (context == null)
             {
@@ -204,7 +204,7 @@ namespace Cake.CsvHelper
         [CakeMethodAlias]
         [CakeAliasCategory("WriteCsv")]
         [CakeNamespaceImport("CsvHelper.Configuration.CsvClassMap")]
-        public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records, CsvClassMap classMap, CsvHelperSettings settings)
+        public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records, ClassMap classMap, CsvHelperSettings settings)
         {
             if (context == null)
             {
