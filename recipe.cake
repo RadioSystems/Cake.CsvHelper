@@ -8,7 +8,8 @@ BuildParameters.SetParameters(context: Context,
                             title: "Cake.CsvHelper",
                             repositoryOwner: "RadioSystems",
                             repositoryName: "Cake.CsvHelper",
-                            appVeyorAccountName: "RadioSystems");
+                            appVeyorAccountName: "RadioSystems",
+                            shouldRunGitVersion: true);
 
 BuildParameters.PrintParameters(Context);
 
