@@ -7,7 +7,8 @@
     <owners>Radio Systems Corporation</owners>
     <description>Cake Addin for working with CSV files using the CSVHelper library.</description>
     <summary>A set of aliases for Cake to help with running Gulp scripts as part of a build.</summary>
-    <licenseUrl>https://github.com/RadioSystems/Cake.CsvHelper/blob/master/LICENSE</licenseUrl>
+    <license type="expression">Apache-2.0</license>
+    <repository type="git" url="https://github.com/RadioSystems/Cake.CsvHelper.git"/>
     <projectUrl>https://github.com/RadioSystems/Cake.CsvHelper</projectUrl>
     <iconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
