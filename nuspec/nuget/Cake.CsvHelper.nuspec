@@ -13,12 +13,21 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) Radio Systems Corporation 2017 - Present</copyright>
     <tags>Cake, Script, Build, CsvHelper, CSV, Addin</tags>
+	<dependencies>
+	  <dependency id="CsvHelper" version="24.0.1" />
+	</dependencies>
   </metadata>
   <files>
-    <file src="Cake.CsvHelper.dll" target="lib\net46" />
-    <file src="Cake.CsvHelper.pdb" target="lib\net46" />
-    <file src="Cake.CsvHelper.xml" target="lib\net46" />
-    <file src="CsvHelper.dll" target="lib\net46" />
-    <file src="CsvHelper.xml" target="lib\net46" />
+    <file src="net46\Cake.CsvHelper.dll" target="lib\net46" />
+    <file src="net46\Cake.CsvHelper.pdb" target="lib\net46" />
+    <file src="net46\Cake.CsvHelper.xml" target="lib\net46" />
+	
+	<file src="netstandard2.0\Cake.CsvHelper.dll" target="lib\netstandard2.0" />
+    <file src="netstandard2.0\Cake.CsvHelper.pdb" target="lib\netstandard2.0" />
+    <file src="netstandard2.0\Cake.CsvHelper.xml" target="lib\netstandard2.0" />
+	
+	<file src="net5.0\Cake.CsvHelper.dll" target="lib\net5.0" />
+    <file src="net5.0\Cake.CsvHelper.pdb" target="lib\net5.0" />
+    <file src="net5.0\Cake.CsvHelper.xml" target="lib\net5.0" />
   </files>
 </package>

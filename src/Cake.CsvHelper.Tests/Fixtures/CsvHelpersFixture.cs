@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using Cake.Core;
 using Cake.Core.IO;
 using Cake.CsvHelper.Tests.Properties;
@@ -12,13 +13,13 @@ namespace Cake.CsvHelper.Tests.Fixtures {
         public ICakeContext Context { get; set; }
         public FilePath CsvFilePath { get; set; }
         public FilePath ResultPath { get; set; }
-        public CsvHelperSettings Settings { get; set; }
+        public CsvConfiguration Configuration { get; set; }
         public List<Person> People { get; set; }
         public Dictionary<string, string> DictionaryMap { get; set; }
         public ClassMap ClassMap { get; set; }
 
         public CsvHelpersFixture(bool csvFileExists = true, bool peopleExists = true) {
-            Settings = new CsvHelperSettings();
+            Configuration = new CsvConfiguration(CultureInfo.InvariantCulture);
 
 
             ClassMap = new PersonMap();
@@ -54,21 +55,21 @@ namespace Cake.CsvHelper.Tests.Fixtures {
 
         public void Read() {
             var csvHelper = new CsvHelpers(Context.FileSystem, Context.Environment);
-            csvHelper.ReadRecords<Person>(CsvFilePath, null, Settings);
+            csvHelper.ReadRecords<Person>(CsvFilePath, null, Configuration);
         }
 
         public void WriteNoMapping() {
             var csvHelper = new CsvHelpers(Context.FileSystem, Context.Environment);
-            csvHelper.WriteRecords(ResultPath, People, Settings);
+            csvHelper.WriteRecords(ResultPath, People, Configuration);
         }
 
         public void WriteWithMapping(bool useDictionaryMapping = false) {
             var csvHelper = new CsvHelpers(Context.FileSystem, Context.Environment);
             if (useDictionaryMapping) {
-                csvHelper.WriteRecords(ResultPath, People, DictionaryMap, Settings);
+                csvHelper.WriteRecords(ResultPath, People, DictionaryMap, Configuration);
             }
             else {
-                csvHelper.WriteRecords(ResultPath, People, ClassMap, Settings);
+                csvHelper.WriteRecords(ResultPath, People, ClassMap, Configuration);
             }
         }
     }
