@@ -18,9 +18,9 @@
 	</dependencies>
   </metadata>
   <files>
-    <file src="net46\Cake.CsvHelper.dll" target="lib\net46" />
-    <file src="net46\Cake.CsvHelper.pdb" target="lib\net46" />
-    <file src="net46\Cake.CsvHelper.xml" target="lib\net46" />
+    <file src="net461\Cake.CsvHelper.dll" target="lib\net461" />
+    <file src="net461\Cake.CsvHelper.pdb" target="lib\net461" />
+    <file src="net461\Cake.CsvHelper.xml" target="lib\net461" />
 	
 	<file src="netstandard2.0\Cake.CsvHelper.dll" target="lib\netstandard2.0" />
     <file src="netstandard2.0\Cake.CsvHelper.pdb" target="lib\netstandard2.0" />
