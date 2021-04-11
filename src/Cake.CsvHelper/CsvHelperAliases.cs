@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Core.IO;
@@ -8,7 +9,7 @@ using CsvHelper.Configuration;
 namespace Cake.CsvHelper
 {
     /// <summary>
-    /// Contians functionality related to reading and writing CSV files.
+    /// Contains functionality related to reading and writing CSV files.
     /// </summary>
     [CakeAliasCategory("CsvHelper")]
     public static class CsvHelperAliases
@@ -28,8 +29,8 @@ namespace Cake.CsvHelper
         [CakeMethodAlias]
         [CakeAliasCategory("ReadCsv")]
         public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile) {
-            var settings = new CsvHelperSettings();
-            return ReadCsv<T>(context, csvFile, null, settings);
+            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture);
+            return ReadCsv<T>(context, csvFile, null, configuration);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Cake.CsvHelper
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="context">The context.</param>
         /// <param name="csvFile">The CSV to read.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="configuration">The configuration.</param>
         /// <returns>List objects as defined by type.</returns>
         /// <example>
         /// <code>
@@ -47,8 +48,8 @@ namespace Cake.CsvHelper
         /// </example>
         [CakeMethodAlias]
         [CakeAliasCategory("ReadCsv")]
-        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, CsvHelperSettings settings) {
-           return ReadCsv<T>(context, csvFile, null, settings);
+        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, CsvConfiguration configuration) {
+           return ReadCsv<T>(context, csvFile, null, configuration);
         }
 
         /// <summary>
@@ -69,8 +70,8 @@ namespace Cake.CsvHelper
         [CakeNamespaceImport("CsvHelper.Configuration.CsvClassMap")]
         public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, ClassMap classMap)
         {
-            var settings = new CsvHelperSettings();
-            return ReadCsv<T>(context, csvFile, classMap, settings);
+            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture);
+            return ReadCsv<T>(context, csvFile, classMap, configuration);
         }
 
         /// <summary>
@@ -80,7 +81,7 @@ namespace Cake.CsvHelper
         /// <param name="context">The context.</param>
         /// <param name="csvFile">The CSV to read.</param>
         /// <param name="classMap">The CSV class map.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="configuration">The configuration.</param>
         /// <returns>List objects as defined by type.</returns>
         /// <example>
         /// <code>
@@ -90,18 +91,18 @@ namespace Cake.CsvHelper
         [CakeMethodAlias]
         [CakeAliasCategory("ReadCsv")]
         [CakeNamespaceImport("CsvHelper.Configuration.CsvClassMap")]
-        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, ClassMap classMap, CsvHelperSettings settings)
+        public static IEnumerable<T> ReadCsv<T>(this ICakeContext context, FilePath csvFile, ClassMap classMap, CsvConfiguration configuration)
         {
             if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
             }
             var csvHelpers = new CsvHelpers(context.FileSystem, context.Environment);
-            return csvHelpers.ReadRecords<T>(csvFile, classMap, settings);
+            return csvHelpers.ReadRecords<T>(csvFile, classMap, configuration);
         }
 
         /// <summary>
-        ///  Writes the records to the speficed file using the specified class mapp and settings.
+        ///  Writes the records to the specified file using the specified class map and settings.
         /// </summary>
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="context">The context.</param>
@@ -117,18 +118,18 @@ namespace Cake.CsvHelper
         [CakeAliasCategory("WriteCsv")]
         public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records)
         {
-            var settings = new CsvHelperSettings();
-            WriteCsv(context, csvFile, records, settings);
+            var configuration = new CsvConfiguration(CultureInfo.InvariantCulture);
+            WriteCsv(context, csvFile, records, configuration);
         }
 
         /// <summary>
-        ///  Writes the records to the speficed file using the specified class mapp and settings.
+        ///  Writes the records to the specified file using the specified class map and settings.
         /// </summary>
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="context">The context.</param>
         /// <param name="csvFile">The CSV to file to write.</param>
         /// <param name="records">The list objects you want to write to a csv.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="configuration">The configuration.</param>
         /// <returns>List objects as defined by type.</returns>
         /// <example>
         /// <code>
@@ -137,25 +138,25 @@ namespace Cake.CsvHelper
         /// </example>
         [CakeMethodAlias]
         [CakeAliasCategory("WriteCsv")]
-        public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records, CsvHelperSettings settings)
+        public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records, CsvConfiguration configuration)
         {
             if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
             }
             var csvHelpers = new CsvHelpers(context.FileSystem, context.Environment);
-            csvHelpers.WriteRecords(csvFile, records, settings);
+            csvHelpers.WriteRecords(csvFile, records, configuration);
         }
 
         /// <summary>
-        ///  Writes the records to the speficed file using the specified class mapp and settings.
+        ///  Writes the records to the specified file using the specified class map and settings.
         /// </summary>
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="context">The context.</param>
         /// <param name="csvFile">The CSV to file to write.</param>
         /// <param name="records">The list objects you want to write to a csv.</param>
         /// <param name="mapping">The property column mapping.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="configuration">The configuration.</param>
         /// <returns>List objects as defined by type.</returns>
         /// <example>
         /// <code>
@@ -168,25 +169,27 @@ namespace Cake.CsvHelper
         /// </example>
         [CakeMethodAlias]
         [CakeAliasCategory("WriteCsv")]
-        public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records, Dictionary<string, string> mapping, CsvHelperSettings settings)
+        public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records,
+            Dictionary<string, string> mapping, CsvConfiguration configuration)
         {
             if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
             }
+
             var csvHelpers = new CsvHelpers(context.FileSystem, context.Environment);
-            csvHelpers.WriteRecords(csvFile, records, mapping, settings);
+            csvHelpers.WriteRecords(csvFile, records, mapping, configuration);
         }
 
         /// <summary>
-        ///  Writes the records to the speficed file using the specified class mapp and settings.
+        ///  Writes the records to the specified file using the specified class map and settings.
         /// </summary>
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="context">The context.</param>
         /// <param name="csvFile">The CSV to file to write.</param>
         /// <param name="records">The list objects you want to write to a csv.</param>
         /// <param name="classMap">The CSV Helper Class Map.</param>
-        /// <param name="settings">The settings.</param>
+        /// <param name="configuration">The configuration.</param>
         /// <returns>List objects as defined by type.</returns>
         /// <example>
         /// <code>     
@@ -204,14 +207,14 @@ namespace Cake.CsvHelper
         [CakeMethodAlias]
         [CakeAliasCategory("WriteCsv")]
         [CakeNamespaceImport("CsvHelper.Configuration.CsvClassMap")]
-        public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records, ClassMap classMap, CsvHelperSettings settings)
+        public static void WriteCsv<T>(this ICakeContext context, FilePath csvFile, List<T> records, ClassMap classMap, CsvConfiguration configuration)
         {
             if (context == null)
             {
                 throw new ArgumentNullException(nameof(context));
             }
             var csvHelpers = new CsvHelpers(context.FileSystem, context.Environment);
-            csvHelpers.WriteRecords(csvFile,records, classMap, settings);
+            csvHelpers.WriteRecords(csvFile,records, classMap, configuration);
         }
     }
 }

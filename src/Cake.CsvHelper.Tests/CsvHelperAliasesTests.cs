@@ -4,7 +4,7 @@ using Cake.Core;
 using Cake.Core.IO;
 using Cake.CsvHelper.Tests.Fixtures;
 using NSubstitute;
-using Should;
+using Shouldly;
 using Xunit;
 
 namespace Cake.CsvHelper.Tests {
@@ -19,7 +19,7 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => CsvHelperAliases.ReadCsv<Person>(null, file.Path));
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("context");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("context");
             }
 
             [Fact]
@@ -33,7 +33,7 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => CsvHelperAliases.ReadCsv<Person>(context, null));
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("csvFile");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("csvFile");
             }
         }
 
@@ -47,7 +47,7 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => CsvHelperAliases.WriteCsv(null, file.Path, new List<Person>()));
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("context");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("context");
             }
         }
     }
