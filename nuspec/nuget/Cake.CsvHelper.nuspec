@@ -12,7 +12,7 @@
     <iconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) 2017-2021 Cake Contributors</copyright>
-    <tags>Cake, Script, Build, CsvHelper, CSV, Addin</tags>
+    <tags>cake csv-helper csvhelper csv cake-addin cake-build cake-contrib addin script build</tags>
   </metadata>
   <files>
     <file src="Cake.CsvHelper.dll" target="lib\net46" />
