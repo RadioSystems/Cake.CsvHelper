@@ -55,7 +55,3 @@ For questions and to discuss ideas & feature requests, use the [GitHub discussio
 ## Release History
 
 Click on the [Releases](https://github.com/cake-contrib/Cake.ISO/releases) tab on GitHub.
-
----
-
-_Copyright &copy; 2017-2021 Cake Contributors - Provided under the [MIT License](LICENSE)._
