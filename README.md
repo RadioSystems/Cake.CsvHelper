@@ -2,6 +2,8 @@
 
 Cake Addin for working with CSV files using the CSVHelper library.
 
+[![License](http://img.shields.io/:license-apache-blue.svg)](https://github.com/RadioSystems/Cake.CsvHelper/blob/master/LICENSE)
+
 ## Give a Star! :star:
 
 If you like or are using this project please give it a star. Thanks!
@@ -28,6 +30,12 @@ If you like or are using this project please give it a star. Thanks!
 
 - [Documentation](https://radiosystems.github.io/Cake.CsvHelper)
 
+## Chat Room
+
+Come join in the conversation about Cake.CsvHelper in our Gitter Chat Room
+
+[![Join the chat at https://gitter.im/cake-contrib/Lobby](https://badges.gitter.im/cake-contrib/Lobby.svg)](https://gitter.im/cake-contrib/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Build
 
 To build this package we are using Cake.
@@ -46,7 +54,7 @@ For questions and to discuss ideas & feature requests, use the [GitHub discussio
 
 ## Release History
 
-Click on the [Releases](https://github.com/cake-contrib/Cake.CsvHelper/releases) tab on GitHub.
+Click on the [Releases](https://github.com/cake-contrib/Cake.ISO/releases) tab on GitHub.
 
 ---
 
