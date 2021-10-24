@@ -4,9 +4,8 @@ using System.Text;
 using Cake.Core.IO;
 using Cake.CsvHelper.Tests.Fixtures;
 using Cake.CsvHelper.Tests.Properties;
-using Should;
+using Shouldly;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Cake.CsvHelper.Tests {
     public sealed class CsvHelperTests {
@@ -20,20 +19,20 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => fixture.Read());
                 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("csvFile");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("csvFile");
             }
 
             [Fact]
             public void Should_Throw_If_Settings_Are_Null() {
                 // Given
                 var fixture = new CsvHelpersFixture();
-                fixture.Settings = null;
+                fixture.Configuration = null;
 
                 // When 
                 var result = Record.Exception(() => fixture.Read());
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("settings");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("configuration");
             }
 
             [Fact]
@@ -46,7 +45,7 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => fixture.Read());
 
                 // Then
-                result.ShouldBeType<FileNotFoundException>();
+                result.ShouldBeOfType<FileNotFoundException>();
             }
         }
 
@@ -61,7 +60,7 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => fixture.WriteNoMapping());
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("csvFile");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("csvFile");
             }
 
             [Fact]
@@ -73,20 +72,20 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => fixture.WriteNoMapping());
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("records");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("records");
             }
             
             [Fact]
             public void Should_Throw_If_Settings_Are_Null() {
                 // Given
                 var fixture = new CsvHelpersFixture();
-                fixture.Settings = null;
+                fixture.Configuration = null;
 
                 // When 
                 var result = Record.Exception(() => fixture.WriteNoMapping());
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("settings");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("configuration");
             }
             
             [Fact(Skip = "Experimental")]
@@ -99,12 +98,12 @@ namespace Cake.CsvHelper.Tests {
 
                 // Then
                 var resultFile = fixture.FileSystem.GetFile(fixture.ResultPath);
-                resultFile.Exists.ShouldEqual(true);
+                resultFile.Exists.ShouldBeTrue();
                 string resultString;
                 using(var resultStream = resultFile.OpenRead())
                 using (var streamReader = new StreamReader(resultStream, Encoding.UTF8)) {
                     resultString = streamReader.ReadToEnd();
-                    resultString.Trim().ShouldEqual(Resources.CsvHelper_CsvFile.Trim());
+                    resultString.Trim().ShouldBe(Resources.CsvHelper_CsvFile.Trim());
                 }
             }
         }
@@ -120,7 +119,7 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => fixture.WriteWithMapping());
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("csvFile");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("csvFile");
             }
 
             [Fact]
@@ -132,7 +131,7 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => fixture.WriteWithMapping());
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("records");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("records");
             }
 
             [Fact]
@@ -144,7 +143,7 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => fixture.WriteWithMapping());
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("classMap");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("classMap");
             }
 
             [Fact]
@@ -156,20 +155,20 @@ namespace Cake.CsvHelper.Tests {
                 var result = Record.Exception(() => fixture.WriteWithMapping(true));
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("mapping");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("mapping");
             }
 
             [Fact]
             public void Should_Throw_If_Settings_Are_Null() {
                 // Given
                 var fixture = new CsvHelpersFixture();
-                fixture.Settings = null;
+                fixture.Configuration = null;
 
                 // When 
                 var result = Record.Exception(() => fixture.WriteWithMapping());
 
                 // Then
-                result.ShouldBeType<ArgumentNullException>().ParamName.ShouldEqual("settings");
+                result.ShouldBeOfType<ArgumentNullException>().ParamName.ShouldBe("configuration");
             }
 
             [Fact(Skip = "Experimental")]
@@ -182,13 +181,13 @@ namespace Cake.CsvHelper.Tests {
 
                 // Then
                 var resultFile = fixture.FileSystem.GetFile(fixture.ResultPath);
-                resultFile.Exists.ShouldEqual(true);
+                resultFile.Exists.ShouldBeTrue();
                 string resultString;
                 using (var resultStream = resultFile.OpenRead())
                 using (var streamReader = new StreamReader(resultStream, Encoding.UTF8)) {
                     resultString = streamReader.ReadToEnd();
                 }
-                resultString.Trim().ShouldEqual(Resources.CsvHelper_MappedFile.Trim());
+                resultString.Trim().ShouldBe(Resources.CsvHelper_MappedFile.Trim());
             }
 
             [Fact(Skip = "Experimental")]
@@ -201,13 +200,13 @@ namespace Cake.CsvHelper.Tests {
 
                 // Then
                 var resultFile = fixture.FileSystem.GetFile(fixture.ResultPath);
-                resultFile.Exists.ShouldEqual(true);
+                resultFile.Exists.ShouldBeTrue();
                 string resultString;
                 using (var resultStream = resultFile.OpenRead())
                 using (var streamReader = new StreamReader(resultStream, Encoding.UTF8)) {
                     resultString = streamReader.ReadToEnd();
                 }
-                resultString.Trim().ShouldEqual(Resources.CsvHelper_MappedFile.Trim());
+                resultString.Trim().ShouldBe(Resources.CsvHelper_MappedFile.Trim());
             }
         }
     }

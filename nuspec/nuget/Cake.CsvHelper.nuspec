@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <id>Cake.CsvHelper</id>
     <version>0.0.0</version>
@@ -9,16 +10,25 @@
     <summary>A set of aliases for Cake to help with running Gulp scripts as part of a build.</summary>
     <licenseUrl>https://github.com/RadioSystems/Cake.CsvHelper/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/RadioSystems/Cake.CsvHelper</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/addin/cake-contrib-addin-medium.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) Radio Systems Corporation 2017 - Present</copyright>
-    <tags>Cake, Script, Build, CsvHelper, CSV, Addin</tags>
+    <dependencies>
+      <dependency id="CsvHelper" version="27.1.1" />
+    </dependencies>
+    <tags>cake csv-helper csvhelper csv cake-addin cake-build cake-contrib addin script build</tags>
   </metadata>
   <files>
-    <file src="Cake.CsvHelper.dll" target="lib\net46" />
-    <file src="Cake.CsvHelper.pdb" target="lib\net46" />
-    <file src="Cake.CsvHelper.xml" target="lib\net46" />
-    <file src="CsvHelper.dll" target="lib\net46" />
-    <file src="CsvHelper.xml" target="lib\net46" />
+    <file src="net461\Cake.CsvHelper.dll" target="lib\net461" />
+    <file src="net461\Cake.CsvHelper.pdb" target="lib\net461" />
+    <file src="net461\Cake.CsvHelper.xml" target="lib\net461" />
+
+    <file src="netstandard2.0\Cake.CsvHelper.dll" target="lib\netstandard2.0" />
+    <file src="netstandard2.0\Cake.CsvHelper.pdb" target="lib\netstandard2.0" />
+    <file src="netstandard2.0\Cake.CsvHelper.xml" target="lib\netstandard2.0" />
+
+    <file src="net5.0\Cake.CsvHelper.dll" target="lib\net5.0" />
+    <file src="net5.0\Cake.CsvHelper.pdb" target="lib\net5.0" />
+    <file src="net5.0\Cake.CsvHelper.xml" target="lib\net5.0" />
   </files>
 </package>
