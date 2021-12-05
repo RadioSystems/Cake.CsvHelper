@@ -12,13 +12,19 @@
     <iconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/addin/cake-contrib-addin-medium.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright (c) Radio Systems Corporation 2017 - Present</copyright>
-    <tags>cake csv-helper csvhelper csv cake-addin cake-build cake-contrib addin script build</tags>
+    <tags>cake script build cake-build addin cake-addin csv-helper csvhelper csv</tags>
   </metadata>
   <files>
-    <file src="Cake.CsvHelper.dll" target="lib\net46" />
-    <file src="Cake.CsvHelper.pdb" target="lib\net46" />
-    <file src="Cake.CsvHelper.xml" target="lib\net46" />
-    <file src="CsvHelper.dll" target="lib\net46" />
-    <file src="CsvHelper.xml" target="lib\net46" />
+    <file src="netcoreapp3.1/Cake.CsvHelper.dll" target="lib/netcoreapp3.1" />
+    <file src="netcoreapp3.1/Cake.CsvHelper.pdb" target="lib/netcoreapp3.1" />
+    <file src="netcoreapp3.1/Cake.CsvHelper.xml" target="lib/netcoreapp3.1" />
+	
+    <file src="net5.0/Cake.CsvHelper.dll" target="lib/net5.0" />
+    <file src="net5.0/Cake.CsvHelper.pdb" target="lib/net5.0" />
+    <file src="net5.0/Cake.CsvHelper.xml" target="lib/net5.0" />
+	
+    <file src="net6.0/Cake.CsvHelper.dll" target="lib/net6.0" />
+    <file src="net6.0/Cake.CsvHelper.pdb" target="lib/net6.0" />
+    <file src="net6.0/Cake.CsvHelper.xml" target="lib/net6.0" />
   </files>
 </package>
